@@ -4,6 +4,14 @@
 ==================================================
 */
 
+:root {
+  --color-text-primary: #ffffff;
+  --color-accent: #FCD494;
+  --color-bg-dark: rgba(31, 40, 51, 0.6);
+  --color-shadow: #fff3cc65;
+  --color-bg-body: #0b0c10;
+}
+
 *,
 *::before,
 *::after {
@@ -14,11 +22,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: #fff3cc; /* crem cald, luminos și prietenos */
-  background-color: #0b0c10; /* deep black cosmic */
+  color: var(--color-shadow); 
+  background-color: var(--color-bg-body); 
   font-size: 14px;
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 .container {
@@ -30,7 +39,7 @@ body {
   align-items: center;
   gap: 60px;
   padding: 20px 15px;
-  background-color: rgba(31, 40, 51, 0.6); /* deep space cu transparență */
+  /* background-color: rgba(31, 40, 51, 0.6);  */
 }
 
 .back-vid {
@@ -46,8 +55,6 @@ body {
   pointer-events: none;
 }
 
-
-
 /* ============================================
    HEADER SECTION (Mobile First)
 =============================================== */
@@ -61,7 +68,7 @@ header {
   top: 0; left: 0; right: 0;
   height: 60px;
   padding: 0 20px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: var(--color-bg-dark);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
   z-index: 999;
@@ -80,6 +87,10 @@ header {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.left h2{
+  color: var(--color-text-primary);
+}
+
 header ul {
   display: none; /* ascuns pe mobil */
 }
@@ -90,18 +101,18 @@ header ul li {
 
 header ul a {
   text-decoration: none;
-  color: #ddd;
+  color: var(--color-text-primary);
   font-weight: 500;
   margin: 0 10px;
   transition: color 0.3s ease;
 }
 
 header ul a:hover {
-  color: #fca311;
+  color: var(--color-accent);
 }
 
 .box-icons {
-  display: none; /* ascuns inițial pentru mobile */
+  display: none; 
   gap: 20px;
 }
 
@@ -114,15 +125,13 @@ header ul a:hover {
   font-size: 18px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ddd;
+  color: var(--color-text-primary);
   text-decoration: none;
   transition: 0.3s;
 }
 
 .box-icons a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #1f2833;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  color: var(--color-bg-dark);
 }
 
 /* ============================================
@@ -138,17 +147,27 @@ header ul a:hover {
   padding: 80px 20px 50px;
   height: auto;
   text-align: center;
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary);
   position: relative;
 }
 
-.hero-info {
-  max-width: 100%;
+
+/* Wrapper pentru text + imagine (doar pe mobil) */
+.hero-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.text-content {
+  flex: 1;
+  text-align: left;
 }
 
 .hero-info .subtitle {
-  color: rgba(252, 163, 17, 0.5);
+  color: var(--color-accent);
+  text-shadow: 0 0 60px var(--color-shadow);
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -159,7 +178,7 @@ header ul a:hover {
   font-size: 32px;
   margin: 0 0 20px;
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.455);
 }
 
 .hero-info .description {
@@ -175,7 +194,7 @@ header ul a:hover {
   height: 250px;
   border-radius: 20px;
   overflow: hidden;
-  margin-top: 30px;
+  margin: 30px auto 0;
   mix-blend-mode: lighten;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -186,10 +205,24 @@ header ul a:hover {
   object-fit: cover;
 }
 
-.hero-vid-box {
-  display: none; /* ascuns pe mobil */
+/* ===================================================
+   HERO PROFILE IMAGE – Vizibilă pe mobil în dreapta
+=================================================== */
+.hero-img-box {
+  flex-shrink: 0;
+  display: block;
 }
 
+.hero-img-box img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px var(--color-shadow);
+}
+
+/* Scroll-down indicator */
 .scroll-down {
   height: 40px;
   width: 25px;
@@ -242,6 +275,7 @@ header ul a:hover {
   }
 }
 
+
 /* ================================================
    INFO SECTION (MOBILE FIRST)
 =================================================== */
@@ -283,7 +317,7 @@ header ul a:hover {
   min-height: 350px;
   padding: 20px;
   border-radius: 20px;
-  background-color: rgba(31, 40, 51, 0.5);
+  background-color: var(--color-bg-dark);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
@@ -455,25 +489,32 @@ header ul a:hover {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-.skills-box {
-  width: 100%;
-  height: auto;
+/* Titlu + imagine creier grupate */
+.skills-header {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  position: relative;
-  mix-blend-mode: lighten;
-  opacity: 0.7;
+  gap: 20px;
 }
 
-.skills-image {
+.skills-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e5d3b3;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Imaginea cu creier */
+.skills-header img {
   width: 90%;
+  max-width: 300px;
   height: auto;
   border-radius: 20px;
   object-fit: cover;
   mix-blend-mode: difference;
   clip-path: inset(0 15% 0 15%);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  opacity: 0.8;
 }
 
 /* Designer și Coder — empilați vertical */
@@ -896,15 +937,14 @@ header ul a:hover {
   }
 
   .hero {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     padding: 100px 40px;
-    text-align: left;
+    text-align: center;
   }
 
   .hero-info {
-    max-width: 60%;
+    max-width: 100%;
   }
 
   .mini-video-box {
@@ -964,44 +1004,6 @@ header ul a:hover {
   }
 }
 
-  @media screen and (min-width: 768px) {
-  .slider {
-    height: 200px;
-  }
-
-  .slider .list .item img {
-    max-width: 250px;
-  }
-
-  .contact-section {
-    flex-direction: row;
-    justify-content: space-between;
-    height: auto;
-    gap: 60px;
-    text-align: left;
-  }
-
-  .contact-section h1 {
-    position: relative;
-    font-size: 32px;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .social-box,
-  .contact-box {
-    align-items: flex-start;
-  }
-
-  .contact-box button {
-    width: auto;
-  }
-
-  .sidebar.open-sidebar {
-    width: 50%;
-  }
-}
 
 /* Large devices (≥992px) */
 @media (min-width: 992px) {
