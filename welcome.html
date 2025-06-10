@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabi Gafencu - Frontend Developer</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="design.css">
+</head>
+<body>
+  <!-- ========== NAVBAR ========== -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <div class="logo">Gabi</div>
+      <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" data-animate>
+  <div class="hero-image">
+    <img src="Images/Gabi - profile img.jpg" alt="Gabi Gafencu Profile">
+  </div>
+  <div class="hero-content">
+    <h1 id="hero-title"></h1>
+    <p>I build modern, intuitive web interfaces with a focus on user experience and clean code.</p>
+    <a href="#contact" class="cta-btn"><span>Contact Me</span> <i class="bx bx-send"></i></a>
+  </div>
+</section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about" class="about section" data-animate>
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate frontend developer with experience in HTML, CSS, JavaScript, and React. 
+      I love transforming ideas into beautiful, functional products. My approach is mobile-first, 
+      accessibility-focused, and always up to date with the latest trends in web design.
+    </p>
+  </section>
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section id="projects" class="projects section" data-animate>
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <!-- Project Card 1 -->
+      <article class="project-card" data-animate>
+        <div class="project-icon"><i class="bx bx-code-alt"></i></div>
+        <h3>Portfolio Website</h3>
+        <p>Personal portfolio built with React and styled-components. Fully responsive, with smooth animations and dark mode.</p>
+        <a href="https://github.com/gabigafencu/portfolio" target="_blank" rel="noopener">View Project</a>
+      </article>
+      <!-- Project Card 2 -->
+      <article class="project-card" data-animate>
+        <div class="project-icon"><i class="bx bx-layout"></i></div>
+        <h3>Landing Page Builder</h3>
+        <p>Drag & drop landing page builder using Laravel and Vanilla JS. Focus on UX and real-time preview.</p>
+        <a href="https://github.com/gabigafencu/landing-builder" target="_blank" rel="noopener">View Project</a>
+      </article>
+      <!-- Project Card 3 -->
+      <article class="project-card" data-animate>
+        <div class="project-icon"><i class="bx bx-task"></i></div>
+        <h3>Task Manager App</h3>
+        <p>Task management SPA with React, Redux, and Firebase. Features real-time sync and notifications.</p>
+        <a href="https://github.com/gabigafencu/task-manager" target="_blank" rel="noopener">View Project</a>
+      </article>
+      <!-- Project Card 4 -->
+      <article class="project-card" data-animate>
+        <div class="project-icon"><i class="bx bx-edit"></i></div>
+        <h3>Blog Platform</h3>
+        <p>Full-stack blog platform with authentication, markdown editor, and REST API. Built with Node.js and React.</p>
+        <a href="https://github.com/gabigafencu/blog-platform" target="_blank" rel="noopener">View Project</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section id="contact" class="contact section" data-animate>
+    <h2>Contact Me</h2>
+    <form class="contact-form" id="contact-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button type="submit" class="cta-btn submit-btn"><span>Send Message</span> <i class="bx bx-send"></i></button>
+    </form>
+    <div class="social-links">
+      <a href="https://github.com/gabigafencu" aria-label="GitHub" target="_blank"><i class="bx bxl-github"></i></a>
+      <a href="https://instagram.com/gabigafencu" aria-label="Instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+      <a href="https://linkedin.com/in/gabigafencu" aria-label="LinkedIn" target="_blank"><i class="bx bxl-linkedin"></i></a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p>© 2025 Gabi Gafencu. All rights reserved.</p>
+  </footer>
+
+  <!-- ========== JS ========== -->
+  <script src="script.js"></script>
+</body>
+</html>
