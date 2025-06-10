@@ -7,8 +7,11 @@
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <!-- CSS -->
-  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- ========== NAVBAR ========== -->
@@ -32,7 +35,10 @@
     <img src="Images/Gabi - profile img.jpg" alt="Gabi Gafencu Profile">
   </div>
   <div class="hero-content">
-    <h1 id="hero-title"></h1>
+    <h1 id="hero-title">
+    <span class="welcome" id="welcome-text"></span>
+    <span id="main-text"></span>
+  </h1>
     <p>I build modern, intuitive web interfaces with a focus on user experience and clean code.</p>
     <a href="#contact" class="cta-btn"><span>Contact Me</span> <i class="bx bx-send"></i></a>
   </div>
@@ -112,6 +118,9 @@
   <footer>
     <p>© 2025 Gabi Gafencu. All rights reserved.</p>
   </footer>
+
+  <!-- ========== SCROLL TO TOP BUTTON ========== -->
+  <button id="scrollTopBtn" aria-label="Back to top">↑</button>
 
   <!-- ========== JS ========== -->
   <script src="script.js"></script>

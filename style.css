@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 :root {
-  --white: #fff;
-  --black: #181818;
-  --gray-light: #f4f6fa;
-  --gray: #6c6f7a;
-  --blue: #2563eb;
-  --blue-dark: #1746a2;
-  --shadow: 0 6px 28px rgba(37,99,235,0.12);
-  --shadow-strong: 0 12px 48px rgba(37,99,235,0.16);
+  --white: #f0ede8; /* Gri cald, bej subtil */
+  --black: #1a1a1a;
+  --gray-light: #f7f5f2;
+  --gray: #6b6b6b;
+  --blue: #1e3a8a; /* Albastru misterios, mai închis */
+  --blue-dark: #0f172a; /* Albastru foarte închis, aproape navy */
+  --shadow: 0 6px 28px rgba(30,58,138,0.12);
+  --shadow-strong: 0 12px 48px rgba(30,58,138,0.16);
   --radius: 18px;
   --transition: 0.3s cubic-bezier(.4,2,.6,1);
 }
@@ -44,7 +44,7 @@ header {
 /* NAVBAR BLUR EFFECT PE MOBIL */
 @media (max-width: 700px) {
   header {
-    background: rgba(255,255,255,0.85);
+    background: rgba(240,237,232,0.85);
     backdrop-filter: blur(8px);
   }
 }
@@ -272,7 +272,7 @@ header {
   font-size: 1.1rem;
   border: none;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.13);
+  box-shadow: 0 4px 16px rgba(30,58,138,0.13);
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
   text-decoration: none;
@@ -290,7 +290,7 @@ header {
   position: absolute;
   width: 120px;
   height: 120px;
-  background: rgba(37,99,235,0.18);
+  background: rgba(30,58,138,0.18);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   animation: ripple-anim 0.6s linear;
@@ -348,24 +348,8 @@ header {
 }
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-}
-
-/* HORIZONTAL SCROLL PE MOBIL */
-@media (max-width: 700px) {
-  .projects-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 1.2rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1rem;
-  }
-  .project-card {
-    min-width: 80vw;
-    scroll-snap-align: start;
-  }
 }
 
 /* Project Cards - HOVER EFFECT AJUSTAT */
@@ -386,9 +370,22 @@ header {
 
 /* HOVER EFFECT MAI SUBTIL */
 .project-card:hover {
-  transform: translateY(-8px) scale(1.02) rotate(-0.5deg); /* Redus de la scale(1.04) la scale(1.02) */
-  box-shadow: 0 16px 48px rgba(37,99,235,0.18); /* Redus intensitatea umbrei */
+  transform: translateY(-8px) scale(1.02) rotate(-0.5deg);
+  box-shadow: 0 16px 48px rgba(30,58,138,0.18);
   border-color: var(--blue);
+}
+
+/* EFECT TOUCH PE MOBIL (bounce scurt) */
+@media (hover: none) and (pointer: coarse) {
+  .project-card:active {
+    animation: bounceMobile 0.4s;
+  }
+}
+
+@keyframes bounceMobile {
+  0% { transform: scale(1);}
+  50% { transform: scale(1.07);}
+  100% { transform: scale(1);}
 }
 
 /* Project Icons */
@@ -526,7 +523,7 @@ header {
   width: 48px;
   height: 48px;
   font-size: 1.5rem;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.13);
+  box-shadow: 0 4px 16px rgba(30,58,138,0.13);
   display: none;
   z-index: 999;
   cursor: pointer;
@@ -534,7 +531,7 @@ header {
 }
 #scrollTopBtn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(37,99,235,0.2);
+  box-shadow: 0 6px 20px rgba(30,58,138,0.2);
 }
 @media (max-width: 700px) {
   #scrollTopBtn { 
