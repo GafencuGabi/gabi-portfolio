@@ -44,50 +44,35 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// ========== TYPING ANIMATION LA TITLU HERO (multi-linie) ==========
-const welcomeText = document.getElementById('welcome-text');
+// ========== TYPING ANIMATION LA TITLU HERO ==========
 const mainText = document.getElementById('main-text');
 
-if (welcomeText && mainText) {
-  const welcomeLine = "Welcome.";
-  const mainLines = ["Hi, I'm Gabi.", "Frontend Developer"];
+if (mainText) {
+  const mainLines = ["Hi, I'm Gabi.", "Web Developer"];
   
-  let charIndex = 0;
-  
-  // Primul pas: typing pentru "Welcome."
-  function typeWelcome() {
-    if (charIndex < welcomeLine.length) {
-      welcomeText.textContent += welcomeLine.charAt(charIndex);
-      charIndex++;
-      setTimeout(typeWelcome, 60);
-    } else {
-      // După "Welcome.", începem cu restul textului
-      setTimeout(typeMainText, 800);
-    }
-  }
-  
-  // Al doilea pas: typing pentru restul textului
   let lineIndex = 0;
-  let mainCharIndex = 0;
+  let charIndex = 0;
   
   function typeMainText() {
     if (lineIndex < mainLines.length) {
       const line = mainLines[lineIndex];
-      if (mainCharIndex < line.length) {
-        mainText.textContent += line.charAt(mainCharIndex);
-        mainCharIndex++;
+      if (charIndex < line.length) {
+        mainText.innerHTML += line.charAt(charIndex);
+        charIndex++;
         setTimeout(typeMainText, 60);
       } else {
-        mainCharIndex = 0;
+        charIndex = 0;
         lineIndex++;
-        mainText.textContent += '\n'; // Linie nouă
+        if (lineIndex === 1) { // Adăugăm o linie nouă după "Hi, I'm Gabi."
+          mainText.innerHTML += '<br>';
+        }
         setTimeout(typeMainText, 800);
       }
     }
   }
   
   // Începem animația
-  setTimeout(typeWelcome, 600);
+  setTimeout(typeMainText, 600);
 }
 
 // ========== CARDURI PROIECT CU EFECT DE TILT LA TOUCH ==========
