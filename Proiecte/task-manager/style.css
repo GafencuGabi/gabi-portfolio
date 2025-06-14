@@ -1,0 +1,238 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #f1b08a;
+  --background: #f4f3f4;
+  --foreground: #1d1f24;
+  --gray: #c9cdd3;
+  --blue-gray: #97a4b6;
+  --success: #10b981;
+  --danger: #ef4444;
+  --radius: 12px;
+  --transition: 0.2s cubic-bezier(.4,2,.6,1);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  transition: background var(--transition), color var(--transition);
+}
+
+body.dark {
+  --background: #1d1f24;
+  --foreground: #f4f3f4;
+  --gray: #23262b;
+  --blue-gray: #97a4b6;
+}
+
+.container {
+  max-width: 540px;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(37,99,235,0.10);
+  padding: 32px 24px 24px 24px;
+  margin: 48px auto;
+  transition: background var(--transition);
+}
+
+body.dark .container {
+  background: rgba(29,31,36,0.98);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+#toggle-theme {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary);
+  transition: color var(--transition);
+}
+
+form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+#task-input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1.5px solid var(--gray);
+  border-radius: var(--radius);
+  font-size: 1.15rem;
+  outline: none;
+  transition: border var(--transition);
+}
+
+#task-input:focus {
+  border: 1.5px solid var(--primary);
+}
+
+form button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0 22px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+form button:hover {
+  background: #e09e6b;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filter {
+  background: none;
+  border: none;
+  color: var(--blue-gray);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.filter.active, .filter:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+#task-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+
+.task {
+  width: 100%;
+  min-height: 72px;
+  padding: 24px 28px;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  background: var(--gray);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: background var(--transition), box-shadow var(--transition);
+  position: relative;
+  user-select: none;
+}
+
+body.dark .task {
+  background: #23262b;
+}
+
+.task.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.task input[type="checkbox"] {
+  margin-right: 20px;
+  accent-color: var(--primary);
+  width: 26px;
+  height: 26px;
+}
+
+.task .task-text {
+  flex: 1;
+  font-size: 1.18rem;
+  outline: none;
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0 8px;
+  word-break: break-word;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task .edit-btn,
+.task .delete-btn {
+  background: none;
+  border: none;
+  color: var(--blue-gray);
+  font-size: 1.25rem;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.task .edit-btn:hover {
+  color: var(--primary);
+}
+.task .delete-btn:hover {
+  color: var(--danger);
+}
+
+.task.dragging {
+  opacity: 0.3;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  color: var(--blue-gray);
+}
+
+#clear-completed {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  transition: background var(--transition), color var(--transition);
+}
+
+#clear-completed:hover {
+  background: var(--danger);
+  color: #fff;
+}
+

@@ -48,7 +48,12 @@ body {
    NAVBAR ULTRA MODERN
    ======================================== */
 header {
-  background: #f4f3f47d;
+  background: linear-gradient(
+    90deg,
+    #f4f3f494 0%,
+    #1d1f247c 100%
+  );
+  
   backdrop-filter: blur(20px) saturate(180%);
   position: sticky;
   top: 0;
