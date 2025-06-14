@@ -48,13 +48,14 @@ body {
    NAVBAR ULTRA MODERN
    ======================================== */
 header {
-  background: rgba(244, 243, 244, 0.492);
+  background: #f4f3f47d;
   backdrop-filter: blur(20px) saturate(180%);
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: all var(--transition);
-  border: 1px solid var(--blue-gray);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  border-top: 1px solid #0c0f15;
 }
 
 .navbar {

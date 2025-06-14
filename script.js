@@ -139,46 +139,48 @@ console.log(`
 Mobile optimized with WOW effects! 📱✨
 `);
 
-// ========== FORMULAR CONTACT (trimitere către backend) ==========
+// ========== FORMULAR CONTACT (Netlify Forms) ==========
 const contactForm = document.getElementById('contact-form');
 const submitBtn = document.querySelector('.submit-btn');
-contactForm.addEventListener('submit', async function(e) {
+
+contactForm.addEventListener('submit', function(e) {
   e.preventDefault();
+  
+  // Schimbăm butonul în "Sending..."
   submitBtn.innerHTML = '<span>Sending...</span> <i class="bx bx-loader-alt bx-spin"></i>';
   submitBtn.disabled = true;
 
-  const formData = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    message: document.getElementById('message').value
-  };
+  // Colectăm datele din formular
+  const formData = new FormData(contactForm);
 
-  try {
-    const response = await fetch('http://localhost:3001/send-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-
-    if (response.ok) {
-      submitBtn.innerHTML = '<span>Sent!</span> <i class="bx bx-check"></i>';
-      submitBtn.style.background = 'linear-gradient(90deg, #10b981 60%, #059669 100%)';
-      contactForm.reset();
-      setTimeout(() => {
-        submitBtn.innerHTML = '<span>Send Message</span> <i class="bx bx-send"></i>';
-        submitBtn.style.background = '';
-        submitBtn.disabled = false;
-      }, 2500);
-    } else {
-      throw new Error('Eroare la trimiterea mesajului');
-    }
-  } catch (error) {
-    submitBtn.innerHTML = '<span>Error!</span> <i class="bx bx-error"></i>';
-    submitBtn.style.background = 'linear-gradient(90deg, #ef4444 60%, #dc2626 100%)';
+  // Trimitem către Netlify
+  fetch('/', {
+    method: 'POST',
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    // Succes
+    submitBtn.innerHTML = '<span>Sent!</span> <i class="bx bx-check"></i>';
+    submitBtn.style.background = 'linear-gradient(90deg, #10b981 60%, #059669 100%)';
+    contactForm.reset();
+    
     setTimeout(() => {
       submitBtn.innerHTML = '<span>Send Message</span> <i class="bx bx-send"></i>';
       submitBtn.style.background = '';
       submitBtn.disabled = false;
     }, 2500);
-  }
+  })
+  .catch((error) => {
+    // Eroare
+    console.error('Error:', error);
+    submitBtn.innerHTML = '<span>Error!</span> <i class="bx bx-error"></i>';
+    submitBtn.style.background = 'linear-gradient(90deg, #ef4444 60%, #dc2626 100%)';
+    
+    setTimeout(() => {
+      submitBtn.innerHTML = '<span>Send Message</span> <i class="bx bx-send"></i>';
+      submitBtn.style.background = '';
+      submitBtn.disabled = false;
+    }, 2500);
+  });
 });
