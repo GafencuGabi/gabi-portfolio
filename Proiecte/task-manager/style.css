@@ -90,6 +90,7 @@ form {
   font-size: 1.15rem;
   outline: none;
   transition: border var(--transition);
+  width: 90%;
 }
 
 #task-input:focus {
