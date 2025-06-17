@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabooks - Biblioteca ta virtuală</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">📗</span>
+                <span class="logo-text">Gabooks</span>
+            </div>
+            <nav>
+                <button id="home-btn" class="nav-btn active">Acasă</button>
+                <button id="favorites-btn" class="nav-btn">Favorite</button>
+                <button id="darkmode-btn" class="nav-btn" title="Comută dark mode">🌙</button>
+            </nav>
+        </header>
+        <main>
+            <section class="search-section">
+                <input type="text" id="search-input" placeholder="Caută titlu, autor, subiect..." autocomplete="off">
+                <button id="search-button">🔍</button>
+            </section>
+            <section id="results" class="results"></section>
+            <section id="pagination" class="pagination"></section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Gabooks. Biblioteca ta virtuală.</p>
+        </footer>
+    </div>
+    <div id="modal" class="modal hidden"></div>
+    <script src="script.js"></script>
+</body>
+</html>
