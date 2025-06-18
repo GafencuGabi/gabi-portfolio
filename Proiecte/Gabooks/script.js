@@ -1,19 +1,28 @@
-const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
-const resultsDiv = document.getElementById('results');
-const paginationDiv = document.getElementById('pagination');
-const modal = document.getElementById('modal');
-const homeBtn = document.getElementById('home-btn');
-const favoritesBtn = document.getElementById('favorites-btn');
-const darkModeBtn = document.getElementById('darkmode-btn');
-const navBtns = document.querySelectorAll('.nav-btn');
+// Hamburger menu
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const navMenu = document.getElementById('nav-menu');
 
-let currentPage = 1;
-let currentQuery = '';
-let totalItems = 0;
-const booksPerPage = 9;
-let currentBooks = [];
-let showingFavorites = false;
+hamburgerBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navMenu.classList.toggle('open');
+});
+
+// Închide meniul când se apasă pe un buton din nav
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+    });
+});
+
+// Închide meniul când se apasă în afara lui
+document.addEventListener('click', (e) => {
+    if (!hamburgerBtn?.contains(e.target) && !navMenu?.contains(e.target)) {
+        navMenu.classList.remove('open');
+    }
+});
+
+// Restul codului tău JS (search, dark mode, favorite, etc.) rămâne neschimbat
+// ... (codul tău existent de mai jos)
 
 // Debounce pentru search
 function debounce(func, wait) {
@@ -28,13 +37,13 @@ function debounce(func, wait) {
 function setDarkMode(on) {
     document.body.classList.toggle('dark-mode', on);
     localStorage.setItem('gabooks_darkmode', on ? '1' : '0');
-    darkModeBtn.textContent = on ? '☀️' : '🌙';
+    document.getElementById('darkmode-btn').textContent = on ? '☀️' : '🌙';
 }
 function loadDarkMode() {
     const dark = localStorage.getItem('gabooks_darkmode') === '1';
     setDarkMode(dark);
 }
-darkModeBtn.addEventListener('click', () => {
+document.getElementById('darkmode-btn').addEventListener('click', () => {
     setDarkMode(!document.body.classList.contains('dark-mode'));
 });
 loadDarkMode();
@@ -76,6 +85,22 @@ function toggleFavorite(book) {
 }
 
 // Search events
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+const resultsDiv = document.getElementById('results');
+const paginationDiv = document.getElementById('pagination');
+const modal = document.getElementById('modal');
+const homeBtn = document.getElementById('home-btn');
+const favoritesBtn = document.getElementById('favorites-btn');
+const navBtns = document.querySelectorAll('.nav-btn');
+
+let currentPage = 1;
+let currentQuery = '';
+let totalItems = 0;
+const booksPerPage = 9;
+let currentBooks = [];
+let showingFavorites = false;
+
 const debouncedSearch = debounce(() => {
     if (searchInput.value.trim()) {
         currentQuery = searchInput.value.trim();

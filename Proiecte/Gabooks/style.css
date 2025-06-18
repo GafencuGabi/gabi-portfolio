@@ -1,4 +1,3 @@
-
 *, *:before, *:after {
     box-sizing: border-box;
 }
@@ -79,7 +78,25 @@ header {
 
 nav {
     display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.nav-menu {
+    display: flex;
     gap: 0.5rem;
+    align-items: center;
 }
 
 .nav-btn {
@@ -418,5 +435,58 @@ footer {
     }
     .book-card, .skeleton-card {
         max-width: 300px;
+    }
+}
+
+/* Hamburger menu responsive */
+@media (max-width: 600px) {
+    header {
+        flex-direction: row;
+        align-items: center;
+        padding: 0.7rem 0.3rem;
+    }
+    .logo {
+        font-size: 1.1rem;
+        gap: 0.3rem;
+    }
+    .logo-icon {
+        font-size: 1.5rem;
+    }
+    .hamburger-btn {
+        display: block;
+    }
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--white);
+        box-shadow: var(--shadow);
+        border-radius: 0 0 var(--radius) var(--radius);
+        flex-direction: column;
+        gap: 0;
+        min-width: 150px;
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition);
+        z-index: 100;
+    }
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    .nav-menu .nav-btn {
+        border-radius: 0;
+        padding: 0.8rem 1rem;
+        text-align: left;
+        width: 100%;
+        border-bottom: 1px solid var(--gray);
+        background: none;
+        color: var(--primary-dark);
+    }
+    .nav-menu .nav-btn:last-child {
+        border-bottom: none;
+        border-radius: 0 0 var(--radius) var(--radius);
     }
 }
